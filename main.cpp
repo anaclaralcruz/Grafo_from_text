@@ -8,8 +8,6 @@
 /* "main.cpp" ------------------------------------------------- */
 /* Funcao principal que contem o menu do programa */
 
-#include "Grafo.h"
-
 #define OK      0
 
 using namespace std ;

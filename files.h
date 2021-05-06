@@ -1,8 +1,9 @@
 // Autora: Ana Clara Loureiro Cruz
 // Data: 22-04-2021
 
-/*  TRABALHO 1 - LING PROG  */
-    // Analise da media movel dos casos de COVID no Brasil
+/*  TRABALHO 2 - LING PROG  */
+    // Contar o numero de aparicoes de uma palavra e de uma associacao
+    // de palavras em um texto
 
 /* "files.h" ------------------------------------------------- */
 /* Inicializa as funcoes para manipulacao de arquivo */
@@ -16,3 +17,4 @@
 using namespace std;
 
 vector <string> readLines (string);
+vector <string> separarPalavras(string nomeDoArquivo);

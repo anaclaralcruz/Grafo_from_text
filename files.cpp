@@ -2,15 +2,26 @@
 // Data: 22-04-2021
 
 /*  TRABALHO 1 - LING PROG  */
-    // Analise da media movel dos casos de COVID no Brasil
+    // Contar o numero de aparicoes de uma palavra e de uma associacao
+    // de palavras em um texto
 
 /* "files.cpp" ------------------------------------------------- */
 /* Contem as funcoes necessarias para manipular os dados de entrada */
 
 #include "files.h"
-#include <string>
 
-//Le um arquivo e devolve as linhas separadas em um vetor 
+#include <stdio.h>
+#include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+vector <string> palavras ;
+long unsigned int i;
+
+//Le um arquivo e devolve os paragrafos como strings separadas em um vetor 
 vector <string> readLines (string arquivo){
 
   vector <string> vetor;
@@ -24,3 +35,36 @@ vector <string> readLines (string arquivo){
   return vetor;
 }
 
+// Separa as palavras de um arquivo e retorna um Vetor de palavras
+vector <string> separarPalavras(string nomeDoArquivo){
+
+  vector <string> paragrafos , palavrasSeparadas;
+  string palavra ;
+  long unsigned int indice1, indice2 ;
+
+  paragrafos = readLines (nomeDoArquivo);
+
+  for (indice1 = 0 ; indice1 < paragrafos.size() ; indice1++) {
+    string paragrafo = paragrafos[indice1];
+
+    for(indice2=0 ; indice2 <= paragrafo.length() ; indice2++) {
+      if((paragrafo[indice2] != ' ') || (indice2 == paragrafo.length() -1))
+        palavra.push_back(paragrafo[indice2]);
+      else {
+        palavrasSeparadas.push_back(palavra);
+        palavra = "";
+      }
+    }
+  }
+  return palavrasSeparadas;
+}
+
+int main(){
+  palavras = separarPalavras("Teste.txt");
+  cout << "TAM  " << palavras.size() << endl ;
+
+  for (i=0;i<palavras.size() ; i++)
+    cout << palavras[i] << " " ;
+  cout << endl ;
+  return 0;
+}
