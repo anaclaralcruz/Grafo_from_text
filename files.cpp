@@ -47,9 +47,12 @@ vector <string> separarPalavras(string nomeDoArquivo){
   for (indice1 = 0 ; indice1 < paragrafos.size() ; indice1++) {
     string paragrafo = paragrafos[indice1];
 
-    for(indice2=0 ; indice2 <= paragrafo.length() ; indice2++) {
-      if((paragrafo[indice2] != ' ') || (indice2 == paragrafo.length() -1))
+    for(indice2=0 ; indice2 < paragrafo.length() ; indice2++) {
+      if(paragrafo[indice2] != ' '){
         palavra.push_back(paragrafo[indice2]);
+        if (indice2 == paragrafo.length() -1)
+          palavrasSeparadas.push_back(palavra);
+      }
       else {
         palavrasSeparadas.push_back(palavra);
         palavra = "";
@@ -57,14 +60,4 @@ vector <string> separarPalavras(string nomeDoArquivo){
     }
   }
   return palavrasSeparadas;
-}
-
-int main(){
-  palavras = separarPalavras("Teste.txt");
-  cout << "TAM  " << palavras.size() << endl ;
-
-  for (i=0;i<palavras.size() ; i++)
-    cout << palavras[i] << " " ;
-  cout << endl ;
-  return 0;
 }
