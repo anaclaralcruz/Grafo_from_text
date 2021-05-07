@@ -20,10 +20,11 @@ using namespace std;
 class Aresta {
     public:
         // Construtor
-        Aresta(string, string, vector <Vertice>);
+        Aresta(Vertice&, Vertice&);
 
         Vertice getInicio();
         Vertice getFim();
+
         int peso;
 
     private:

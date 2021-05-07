@@ -7,7 +7,6 @@
 
 /* "Grafo.cpp" ------------------------------------------------- */
 /* Contem os metodos e atributos da classe Grafo */
-
 #include "Grafo.h"
 
 #include <stdio.h>
@@ -21,17 +20,27 @@ Grafo::Grafo (string arquivo){
     palavrasComPontuacao = separarPalavras (arquivo) ;
 
     criaVertices();
+    checarRepeticoesVertices();
     criaArestas();
-    checarRepeticoes();
+    checarRepeticoesArestas();
 
 }
 
 void Grafo::criaArestas(){
   for (long unsigned int indice = 0 ; indice < palavrasComPontuacao.size() -1 ; indice++)
     if (palavrasComPontuacao[indice].back() != '.' || palavrasComPontuacao[indice].back() != ','){
-      Aresta aresta(palavrasComPontuacao[indice], palavrasComPontuacao[indice+1], vertices);
+      Vertice inicioAresta = getVerticeComNome (palavrasComPontuacao[indice]);
+      Vertice fimAresta = getVerticeComNome (palavrasComPontuacao[indice+1]);
+      Aresta aresta(inicioAresta, fimAresta);
       arestas.push_back(aresta);
     }
+}
+
+Vertice Grafo::getVerticeComNome(string nome){
+  for (long unsigned int indice = 0 ; indice < vertices.size() ; indice++)
+    if (vertices[indice].getNome() == nome)
+      return vertices[indice];
+  return vertices[0];
 }
 
 void Grafo::criaVertices(){
@@ -39,11 +48,6 @@ void Grafo::criaVertices(){
         Vertice vertice (palavrasComPontuacao[indice]);
         vertices.push_back(vertice);
     }
-}
-
-void Grafo::checarRepeticoes (){
-  checarRepeticoesArestas();
-  checarRepeticoesVertices();
 }
 
 void Grafo::checarRepeticoesVertices(){
@@ -110,7 +114,6 @@ vector <string> Grafo::readLines (string arquivo){
 }
 
 void Grafo::printarVetores(){
-  cout << vertices[0].getNome() << endl ;
-  cout << vertices[1].getNome() << endl ;
-  cout << vertices[2].getNome() << endl ;
+  cout << "TAM VERtices " << vertices.size() << endl ;
+  
 }

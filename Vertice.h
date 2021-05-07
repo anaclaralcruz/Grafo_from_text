@@ -18,7 +18,7 @@ using namespace std;
 class Vertice {
     public:
         // Construtor - recebe uma palavra
-        Vertice (string);
+        Vertice (string = "Palavra");
 
         int peso;
         string getNome();

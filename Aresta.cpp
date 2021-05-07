@@ -10,12 +10,10 @@
 
 #include "Aresta.h"
 
-Aresta::Aresta (string nomeInicio , string nomeFim, vector <Vertice> vertices){
-    for (unsigned long int i = 0 ; i < vertices.size() ; i++)
-        if (vertices[i].getNome == nomeInicio)
-            inicio = vertices[i];
-        if (vertices[i].getNome == nomeFim)
-            fim = vertices[i];
+Aresta::Aresta (Vertice& inicioAresta, Vertice& fimAresta){
+    inicio = inicioAresta;
+    fim = fimAresta;
+    peso = 1;
 }
 
 Vertice Aresta::getInicio(){

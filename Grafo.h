@@ -21,6 +21,8 @@ class Grafo {
         // Construtor - recebe um arquivo
         Grafo (string);
 
+        Vertice getVerticeComNome(string);
+
         void criaVertices();
         void criaArestas();
         void printarVetores();
