@@ -47,9 +47,9 @@ class Grafo {
         // Procura um vertice com o nome desejado e devolve um Vertice da lista por referencia
         Vertice& getVerticeComNome(string);
         // Cria um vetor com uma sequencia de palavras
-        void criaVetorSequencia(int);
+        void criaVetorSequencia(long unsigned int);
         // Printa na tela sequencia de N palavras que mais aparece no texto
-        void encontraMaiorSequencia(int);
+        void encontraMaiorSequencia(long unsigned int);
 
         // Read lines from a file (recebe um arquivo)
         vector <string> readLines (string);

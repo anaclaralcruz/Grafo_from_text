@@ -53,23 +53,31 @@ void Grafo::sequenciaMaisUtilizada(){
 }
 
 void Grafo::palavrasConsecutivas(){
-  int n ;
+  long unsigned int n ;
   cout << "Digite o valor de N -> " ;
   cin >> n ;
   cout << endl;
-  criaVetorSequencia(n);
-  encontraMaiorSequencia(n);
+  if (n > palavrasComPontuacao.size())
+    cout << "ERRO: N maior que o tamanho da frase!!! N_max = "
+        << palavrasComPontuacao.size() << endl ;
+  else {
+    criaVetorSequencia(n);
+    if (sequenciaDePalavras.size() == 0)
+      cout << "NENHUMA SEQUENCIA DESSE TAMANHO ENCONTRADA."
+            << " A sequencia nao pode ser interrompida por ponto ou virgula. Tente outro valor! " << endl;
+    encontraMaiorSequencia(n);
+  }
 } 
 
 // Printa na tela sequencia de n palavras que mais aparece no texto
-void Grafo::encontraMaiorSequencia(int n){
+void Grafo::encontraMaiorSequencia(long unsigned int n){
   vector <int> pesos;
   for (long unsigned int indice = 0 ; indice < sequenciaDePalavras.size() ; indice++){
     pesos.push_back(1);
     for (long unsigned int indice2 = indice ; indice2 < sequenciaDePalavras.size() ; indice2++){
       int checador = 0;
       if (indice2 != indice){
-        for (int i = 0 ; i < n ; i++)
+        for (long unsigned int i = 0 ; i < n ; i++)
           if (sequenciaDePalavras[indice][i] == sequenciaDePalavras[indice2][i])
             checador++;
       }
@@ -94,13 +102,13 @@ void Grafo::encontraMaiorSequencia(int n){
   }
 }
 
-void Grafo::criaVetorSequencia(int n){
+void Grafo::criaVetorSequencia(long unsigned int n){
   vector <string> vetorDePalavras ;
 
   for (long unsigned int indice1 = 0 ; indice1 < (palavrasComPontuacao.size() - (n-1)) ; indice1++){
     int verdade = 1 ;
 
-    for (int i = 0 ; i < n ; i++){
+    for (long unsigned int i = 0 ; i < n ; i++){
       if ( i != n && (palavrasComPontuacao[indice1+i].back() == '.' || palavrasComPontuacao[indice1+i].back() == ','
           || palavrasComPontuacao[indice1+i].back() == '!' || palavrasComPontuacao[indice1+i].back() == '?'
           || palavrasComPontuacao[indice1+i].back() == ':' || palavrasComPontuacao[indice1+i].back() == ';'))
