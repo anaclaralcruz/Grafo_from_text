@@ -16,7 +16,6 @@
 
 using namespace std; 
 
-
 class Aresta {
     public:
         // Construtor
@@ -30,6 +29,4 @@ class Aresta {
     private:
         Vertice inicio;
         Vertice fim;
-
-
 };

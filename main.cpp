@@ -9,7 +9,7 @@
 /* Funcao principal que contem o menu do programa */
 
 #define OK      0
-#define ARQUIVO_DE_ENTRADA  "Teste.txt"
+#define ARQUIVO_DE_ENTRADA  "Entrada.txt"
 
 #include "Grafo.h"
 
@@ -23,7 +23,7 @@ int main (){
 
     Grafo grafo (ARQUIVO_DE_ENTRADA);
 
-// Menu de entrada:
+    // Menu de entrada:
     cout << " ______________________________________________________" << endl;
     cout << "| 1 | Palavra mais usada no texto                     |" << endl;
     cout << "| 2 | Sequencia de duas palavras mais usadas no texto |" << endl;
@@ -38,6 +38,8 @@ int main (){
 
     else if (opcaoMenu == 2)
         grafo.sequenciaMaisUtilizada();
+
+    //else if (opcaoMenu == 3)
     
     else
         cout << "ERRO - Entrada invalida, selecione um numero de 1 a 3" << endl ;

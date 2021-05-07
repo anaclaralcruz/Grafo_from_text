@@ -26,5 +26,4 @@ class Vertice {
     private:
         string nome;
 };
-
 #endif

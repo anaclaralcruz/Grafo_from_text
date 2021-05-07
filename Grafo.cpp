@@ -25,6 +25,7 @@ Grafo::Grafo (string arquivo){
     checarRepeticoesArestas();
 }
 
+// Printa na tela a palavra com maior peso
 void Grafo::palavraMaisUtilizada(){
   string maisAparece;
   int peso = 0;
@@ -38,6 +39,7 @@ void Grafo::palavraMaisUtilizada(){
   cout << "A palavra que mais aparece eh \" " << maisAparece << " \"" << endl;
 }
 
+// Printa na tela a sequencia com maior peso
 void Grafo::sequenciaMaisUtilizada(){
   string maisAparece;
   int peso = 0;
@@ -160,11 +162,4 @@ vector <string> Grafo::readLines (string arquivo){
     vetor.push_back(linha);
   }
   return vetor;
-}
-
-void Grafo::printarVetores(){
-  cout << "TAM ARESTAS:   " << arestas.size() << endl ;
-  for (long unsigned int i = 0 ; i < arestas.size() ; i++)
-    cout << arestas[i].getInicio().getNome() << " " << arestas[i].getFim().getNome() << " "<< arestas[i].peso << endl ;
-  
 }

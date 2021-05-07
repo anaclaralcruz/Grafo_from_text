@@ -21,10 +21,10 @@ class Grafo {
         // Construtor - recebe um arquivo
         Grafo (string);
         
+        // Funcoes de printar na tela
         void palavraMaisUtilizada();
         void sequenciaMaisUtilizada();
         void palavrasConsecutivas(int);
-        void printarVetores();
 
     private:
         vector <Vertice> vertices;      // Array de objetos da classe Vertice
