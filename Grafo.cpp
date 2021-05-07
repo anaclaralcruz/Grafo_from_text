@@ -18,16 +18,35 @@
 
 
 Grafo::Grafo (string arquivo){
-    vector <string> vetorDePalavras = separarPalavras (arquivo) ;
-    for (long unsigned int indice = 0 ; indice < vetorDePalavras.size() ; indice++){
-        Vertice vertice (vetorDePalavras[indice]);
-        vertices.push_back(vertice);
-    }
+    palavrasComPontuacao = separarPalavras (arquivo) ;
+
+    criaVertices();
+    criaArestas();
     checarRepeticoes();
 
 }
 
+void Grafo::criaArestas(){
+  for (long unsigned int indice = 0 ; indice < palavrasComPontuacao.size() -1 ; indice++)
+    if (palavrasComPontuacao[indice].back() != '.' || palavrasComPontuacao[indice].back() != ','){
+      Aresta aresta(palavrasComPontuacao[indice], palavrasComPontuacao[indice+1], vertices);
+      arestas.push_back(aresta);
+    }
+}
+
+void Grafo::criaVertices(){
+  for (long unsigned int indice = 0 ; indice < palavrasComPontuacao.size() ; indice++){
+        Vertice vertice (palavrasComPontuacao[indice]);
+        vertices.push_back(vertice);
+    }
+}
+
 void Grafo::checarRepeticoes (){
+  checarRepeticoesArestas();
+  checarRepeticoesVertices();
+}
+
+void Grafo::checarRepeticoesVertices(){
   for (long unsigned int indice = 0 ; indice < vertices.size() ; indice++){
       for (long unsigned int indice2 = 0 ; indice2 < vertices.size() ; indice2++)
         if (indice2 != indice)
@@ -35,7 +54,17 @@ void Grafo::checarRepeticoes (){
             vertices.erase(vertices.begin() + indice2);
             vertices[indice].peso += 1;
           }
+    }
+}
 
+void Grafo::checarRepeticoesArestas(){
+  for (long unsigned int indice = 0 ; indice < arestas.size() ; indice++){
+      for (long unsigned int indice2 = 0 ; indice2 < arestas.size() ; indice2++)
+        if (indice2 != indice)
+          if ((arestas[indice].getInicio().getNome() == arestas[indice2].getInicio().getNome()) || (arestas[indice].getFim().getNome() == arestas[indice2].getFim().getNome())){
+            arestas.erase(arestas.begin() + indice2);
+            arestas[indice].peso += 1;
+          }
     }
 }
 
@@ -84,13 +113,4 @@ void Grafo::printarVetores(){
   cout << vertices[0].getNome() << endl ;
   cout << vertices[1].getNome() << endl ;
   cout << vertices[2].getNome() << endl ;
-  cout << vertices[1].peso << endl ;
-  cout << vertices[3].getNome() << endl ;
-  cout << vertices[4].getNome() << endl ;
-  cout << vertices[5].getNome() << endl ;
-  cout << vertices[6].getNome() << endl ;
-  cout << vertices[7].getNome() << endl ;
-  cout << vertices[8].getNome() << endl ;
-  cout << vertices[9].getNome() << endl ;
-  cout << vertices[10].getNome() << endl ;
 }

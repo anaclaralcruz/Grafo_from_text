@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "Vertice.h"
+#include "Aresta.h"
 
 using namespace std; 
 
@@ -20,12 +21,19 @@ class Grafo {
         // Construtor - recebe um arquivo
         Grafo (string);
 
+        void criaVertices();
+        void criaArestas();
         void printarVetores();
 
     private:
         vector <Vertice> vertices;
+        vector <Aresta> arestas; 
+
+        vector <string> palavrasComPontuacao;
 
         void checarRepeticoes();
+        void checarRepeticoesArestas();
+        void checarRepeticoesVertices();
 
         // Read lines from a file (recebe um arquivo)
         vector <string> readLines (string);

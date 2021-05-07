@@ -9,9 +9,10 @@
 /* Contem os metodos e atributos da classe Grafo */
 
 #include "Vertice.h"
+#include "Aresta.h"
 
 Vertice::Vertice (string palavra){
-    if (palavra[-1] == '.' || palavra[-1] == ',')
+    if (palavra.back() == '.' || palavra.back() == ',')
         palavra.pop_back();
     nome = palavra;
     peso = 1;

@@ -12,6 +12,9 @@
 
 using namespace std; 
 
+#ifndef VERTICE_H
+#define VERTICE_H
+
 class Vertice {
     public:
         // Construtor - recebe uma palavra
@@ -22,6 +25,6 @@ class Vertice {
 
     private:
         string nome;
-
-
 };
+
+#endif
