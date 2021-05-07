@@ -24,7 +24,7 @@ class Grafo {
         // Funcoes de printar na tela
         void palavraMaisUtilizada();
         void sequenciaMaisUtilizada();
-        void palavrasConsecutivas(int);
+        void palavrasConsecutivas();
 
     private:
         vector <Vertice> vertices;      // Array de objetos da classe Vertice
@@ -32,7 +32,7 @@ class Grafo {
 
         vector <string> palavrasComPontuacao;   // Lista de palavras com pontuacao
 
-        vector <string> sequenciaDePalavras;
+        vector <vector<string>> sequenciaDePalavras;
 
         // Cria a array de objetos da classe Vertice
         void criaVertices();
@@ -46,11 +46,12 @@ class Grafo {
 
         // Procura um vertice com o nome desejado e devolve um Vertice da lista por referencia
         Vertice& getVerticeComNome(string);
-
+        // Cria um vetor com uma sequencia de palavras
+        void criaVetorSequencia(int);
+        void encontraMaiorSequencia(int);
 
         // Read lines from a file (recebe um arquivo)
         vector <string> readLines (string);
-
         // Separa as palavras de um arquivo (recebe um arquivo e devolve uma lista de palavras)
         vector <string> separarPalavras(string);
 };

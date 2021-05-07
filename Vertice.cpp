@@ -22,4 +22,3 @@ Vertice::Vertice (string palavra){
 string Vertice::getNome(){
     return nome;
 }
-

@@ -39,7 +39,8 @@ int main (){
     else if (opcaoMenu == 2)
         grafo.sequenciaMaisUtilizada();
 
-    //else if (opcaoMenu == 3)
+    else if (opcaoMenu == 3)
+        grafo.palavrasConsecutivas();
     
     else
         cout << "ERRO - Entrada invalida, selecione um numero de 1 a 3" << endl ;

@@ -52,22 +52,66 @@ void Grafo::sequenciaMaisUtilizada(){
   cout << "A expressao que mais aparece eh \" " << maisAparece << " \"" << endl;
 }
 
-/*void Grafo::criaSequencia(int n){
-  for (int i = 0 ; i < n ; i++){
-    if (i != 0 && palavrasComPontuacao[i-1].back() != '.'
-               && palavrasComPontuacao[i-1].back() != ','
-               && palavrasComPontuacao[i-1].back() != '!'
-               && palavrasComPontuacao[i-1].back() != '?'
-               && palavrasComPontuacao[i-1].back() != ':'
-               && palavrasComPontuacao[i-1].back() != ';')
-    sequenciaDePalavras.push_back(palavrasComPontuacao[i]);
+void Grafo::palavrasConsecutivas(){
+  int n ;
+  cout << "Quantas palavras consecutivas? " ;
+  cin >> n ;
+  cout << endl;
+  criaVetorSequencia(n);
+
+  encontraMaiorSequencia(n);
+} 
+
+void Grafo::encontraMaiorSequencia(int n){
+  vector <int> pesos;
+  for (long unsigned int indice = 0 ; indice < sequenciaDePalavras.size() ; indice++){
+    pesos.push_back(1);
+    for (long unsigned int indice2 = indice ; indice2 < sequenciaDePalavras.size() ; indice2++){
+      int checador = 0;
+      if (indice2 != indice){
+        for (int i = 0 ; i < n ; i++)
+          if (sequenciaDePalavras[indice][i] == sequenciaDePalavras[indice2][i])
+            checador++;
+      }
+      if (checador == 3)
+        pesos[indice] += 1;
+    }
+  }
+  // Checa qual tem o maior peso:
+  int indiceMaiorPeso = 0;
+  for (long unsigned indice3 = 0 ; indice3 < pesos.size() ; indice3++)
+    if (pesos[indice3] > indiceMaiorPeso)
+      indiceMaiorPeso = indice3;
+
+  // Printa na tela:
+  cout << "A sequencia de " << n << " palavras que mais aparece eh  \" " ;
+  for (long unsigned int indice3 = 0 ; indice3 < sequenciaDePalavras[indiceMaiorPeso].size() ; indice3++)
+    cout << sequenciaDePalavras[indiceMaiorPeso][indice3] << " " ;
+  cout << "\"" << endl;
+
+}
+
+void Grafo::criaVetorSequencia(int n){
+  vector <string> vetorDePalavras ;
+  
+  for (long unsigned int indice1 = 0 ; indice1 < (palavrasComPontuacao.size() - (n-1)) ; indice1++){
+    int verdade = 1 ;
+
+    for (int i = 0 ; i < n ; i++){
+      if ( i != n && (palavrasComPontuacao[indice1+i].back() == '.' || palavrasComPontuacao[indice1+i].back() == ','
+          || palavrasComPontuacao[indice1+i].back() == '!' || palavrasComPontuacao[indice1+i].back() == '?'
+          || palavrasComPontuacao[indice1+i].back() == ':' || palavrasComPontuacao[indice1+i].back() == ';'))
+        verdade = verdade*0 ;
+      vetorDePalavras.push_back(palavrasComPontuacao[indice1+i]);
+    }
+
+    if (verdade)
+      sequenciaDePalavras.push_back(vetorDePalavras);
+    vetorDePalavras = {};
   }
 }
 
-void Grafo::palavrasConsecutivas(int n){
-  criaSequencia(n);
 
-} */
 
 void Grafo::criaArestas(){
   for (long unsigned int indice = 0 ; indice < palavrasComPontuacao.size() -1 ; indice++)
