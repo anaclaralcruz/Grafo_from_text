@@ -5,8 +5,6 @@ Programa feito em c++
 
 ---------------------- PROJETO PARA CRIAR UM GRAFO COM BASE EM UM TEXTO ---------------------
 
-[Todo o amor e sentimentos as vitimas da pandemia e seus familiares]
-
 Este programa tem como objetivo criar um grafo a partir de um arquivo txt. No grafo, as 
 palavras sao vertices e as arestas identificam quais palavras estao em sequencia.
 No menu, estao seguintes funcionalidades:
