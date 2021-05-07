@@ -23,6 +23,7 @@ class Grafo {
         
         void palavraMaisUtilizada();
         void sequenciaMaisUtilizada();
+        void palavrasConsecutivas(int);
         void printarVetores();
 
     private:
@@ -30,6 +31,8 @@ class Grafo {
         vector <Aresta> arestas;        // Array de objetos da classe Aresta
 
         vector <string> palavrasComPontuacao;   // Lista de palavras com pontuacao
+
+        vector <string> sequenciaDePalavras;
 
         // Cria a array de objetos da classe Vertice
         void criaVertices();

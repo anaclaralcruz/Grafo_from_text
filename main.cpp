@@ -9,17 +9,38 @@
 /* Funcao principal que contem o menu do programa */
 
 #define OK      0
+#define ARQUIVO_DE_ENTRADA  "Teste.txt"
 
 #include "Grafo.h"
 
 #include <fstream>
+#include <iostream>
 
 using namespace std ;
 
 int main (){
-    Grafo grafo ("Teste.txt");
+    int opcaoMenu;
 
-    grafo.sequenciaMaisUtilizada();
+    Grafo grafo (ARQUIVO_DE_ENTRADA);
+
+// Menu de entrada:
+    cout << " ______________________________________________________" << endl;
+    cout << "| 1 | Palavra mais usada no texto                     |" << endl;
+    cout << "| 2 | Sequencia de duas palavras mais usadas no texto |" << endl;
+    cout << "| 3 | Sequencia de N palavras mais usadas no texto    |" << endl;
+    cout << "|_____________________________________________________|" << endl;
+    cout << "O que deseja? (digite o numero) -> ";
+    cin >> opcaoMenu ;
+    cout << endl;
+
+    if (opcaoMenu == 1)
+        grafo.palavraMaisUtilizada();
+
+    else if (opcaoMenu == 2)
+        grafo.sequenciaMaisUtilizada();
+    
+    else
+        cout << "ERRO - Entrada invalida, selecione um numero de 1 a 3" << endl ;
 
     return OK;
 }

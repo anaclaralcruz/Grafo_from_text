@@ -50,6 +50,23 @@ void Grafo::sequenciaMaisUtilizada(){
   cout << "A expressao que mais aparece eh \" " << maisAparece << " \"" << endl;
 }
 
+/*void Grafo::criaSequencia(int n){
+  for (int i = 0 ; i < n ; i++){
+    if (i != 0 && palavrasComPontuacao[i-1].back() != '.'
+               && palavrasComPontuacao[i-1].back() != ','
+               && palavrasComPontuacao[i-1].back() != '!'
+               && palavrasComPontuacao[i-1].back() != '?'
+               && palavrasComPontuacao[i-1].back() != ':'
+               && palavrasComPontuacao[i-1].back() != ';')
+    sequenciaDePalavras.push_back(palavrasComPontuacao[i]);
+  }
+}
+
+void Grafo::palavrasConsecutivas(int n){
+  criaSequencia(n);
+
+} */
+
 void Grafo::criaArestas(){
   for (long unsigned int indice = 0 ; indice < palavrasComPontuacao.size() -1 ; indice++)
     if (palavrasComPontuacao[indice].back() != '.' && palavrasComPontuacao[indice].back() != ','
