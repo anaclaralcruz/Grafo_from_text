@@ -15,7 +15,7 @@
 #include <iostream>
 #include <fstream>
 
-
+// Construtor
 Grafo::Grafo (string arquivo){
     palavrasComPontuacao = separarPalavras (arquivo) ;
 
@@ -23,20 +23,50 @@ Grafo::Grafo (string arquivo){
     checarRepeticoesVertices();
     criaArestas();
     checarRepeticoesArestas();
+}
 
+void Grafo::palavraMaisUtilizada(){
+  string maisAparece;
+  int peso = 0;
+  for (long unsigned int i = 0 ; i < vertices.size() ; i++){
+    if (vertices[i].peso > peso){
+      
+      maisAparece = vertices[i].getNome();
+      peso = vertices[i].peso ;
+    }
+  }
+  cout << "A palavra que mais aparece eh \" " << maisAparece << " \"" << endl;
+}
+
+void Grafo::sequenciaMaisUtilizada(){
+  string maisAparece;
+  int peso = 0;
+  for (long unsigned int i = 0 ; i < arestas.size() ; i++){
+    if (arestas[i].peso > peso){
+      maisAparece = arestas[i].getInicio().getNome() + " " + arestas[i].getFim().getNome();
+      peso = arestas[i].peso ;
+    }
+  }
+  cout << "A expressao que mais aparece eh \" " << maisAparece << " \"" << endl;
 }
 
 void Grafo::criaArestas(){
   for (long unsigned int indice = 0 ; indice < palavrasComPontuacao.size() -1 ; indice++)
-    if (palavrasComPontuacao[indice].back() != '.' || palavrasComPontuacao[indice].back() != ','){
-      Vertice inicioAresta = getVerticeComNome (palavrasComPontuacao[indice]);
-      Vertice fimAresta = getVerticeComNome (palavrasComPontuacao[indice+1]);
+    if (palavrasComPontuacao[indice].back() != '.' && palavrasComPontuacao[indice].back() != ','
+        && palavrasComPontuacao[indice].back() != '!' && palavrasComPontuacao[indice].back() != '?'
+        && palavrasComPontuacao[indice].back() != ':' && palavrasComPontuacao[indice].back() != ';')
+    {
+      Vertice &inicioAresta = getVerticeComNome (palavrasComPontuacao[indice]);
+      Vertice &fimAresta = getVerticeComNome (palavrasComPontuacao[indice+1]);
       Aresta aresta(inicioAresta, fimAresta);
       arestas.push_back(aresta);
     }
 }
 
-Vertice Grafo::getVerticeComNome(string nome){
+Vertice &Grafo::getVerticeComNome(string nome){
+  if (nome.back() == '.' || nome.back() == ',' || nome.back() == '!' 
+      || nome.back() == '?' || nome.back() == ':' || nome.back() == ';')
+    nome.pop_back();
   for (long unsigned int indice = 0 ; indice < vertices.size() ; indice++)
     if (vertices[indice].getNome() == nome)
       return vertices[indice];
@@ -50,6 +80,7 @@ void Grafo::criaVertices(){
     }
 }
 
+// Chca se ha vertices repetidas, Adicionando peso a eles
 void Grafo::checarRepeticoesVertices(){
   for (long unsigned int indice = 0 ; indice < vertices.size() ; indice++){
       for (long unsigned int indice2 = 0 ; indice2 < vertices.size() ; indice2++)
@@ -61,11 +92,12 @@ void Grafo::checarRepeticoesVertices(){
     }
 }
 
+// Chca se ha arestas repetidas, Adicionando peso as arestas
 void Grafo::checarRepeticoesArestas(){
   for (long unsigned int indice = 0 ; indice < arestas.size() ; indice++){
       for (long unsigned int indice2 = 0 ; indice2 < arestas.size() ; indice2++)
         if (indice2 != indice)
-          if ((arestas[indice].getInicio().getNome() == arestas[indice2].getInicio().getNome()) || (arestas[indice].getFim().getNome() == arestas[indice2].getFim().getNome())){
+          if ((arestas[indice].getInicio().getNome() == arestas[indice2].getInicio().getNome()) && (arestas[indice].getFim().getNome() == arestas[indice2].getFim().getNome())){
             arestas.erase(arestas.begin() + indice2);
             arestas[indice].peso += 1;
           }
@@ -114,6 +146,8 @@ vector <string> Grafo::readLines (string arquivo){
 }
 
 void Grafo::printarVetores(){
-  cout << "TAM VERtices " << vertices.size() << endl ;
+  cout << "TAM ARESTAS:   " << arestas.size() << endl ;
+  for (long unsigned int i = 0 ; i < arestas.size() ; i++)
+    cout << arestas[i].getInicio().getNome() << " " << arestas[i].getFim().getNome() << " "<< arestas[i].peso << endl ;
   
 }

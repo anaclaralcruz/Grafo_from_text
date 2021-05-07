@@ -19,7 +19,7 @@ using namespace std ;
 int main (){
     Grafo grafo ("Teste.txt");
 
-    grafo.printarVetores();
+    grafo.sequenciaMaisUtilizada();
 
     return OK;
 }

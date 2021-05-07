@@ -12,7 +12,8 @@
 #include "Aresta.h"
 
 Vertice::Vertice (string palavra){
-    if (palavra.back() == '.' || palavra.back() == ',')
+    if (palavra.back() == '.' || palavra.back() == ',' || palavra.back() == '!'
+        || palavra.back() == '?' || palavra.back() == ':' || palavra.back() == ';')
         palavra.pop_back();
     nome = palavra;
     peso = 1;
