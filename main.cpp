@@ -10,9 +10,16 @@
 
 #define OK      0
 
+#include "Grafo.h"
+
+#include <fstream>
+
 using namespace std ;
 
 int main (){
+    Grafo grafo ("Teste.txt");
+
+    grafo.printarVetores();
 
     return OK;
 }

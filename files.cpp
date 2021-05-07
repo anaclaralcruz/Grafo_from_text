@@ -18,8 +18,6 @@
 
 using namespace std;
 
-vector <string> palavras ;
-long unsigned int i;
 
 //Le um arquivo e devolve os paragrafos como strings separadas em um vetor 
 vector <string> readLines (string arquivo){

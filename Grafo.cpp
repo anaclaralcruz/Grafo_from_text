@@ -10,11 +10,32 @@
 
 #include "Grafo.h"
 
+#include <stdio.h>
+#include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
+
+
 Grafo::Grafo (string arquivo){
     vector <string> vetorDePalavras = separarPalavras (arquivo) ;
-    for (long usigned int indice = 0 ; indice < vetorDePalavras.size() ; indice++){
+    for (long unsigned int indice = 0 ; indice < vetorDePalavras.size() ; indice++){
         Vertice vertice (vetorDePalavras[indice]);
         vertices.push_back(vertice);
+    }
+    checarRepeticoes();
+
+}
+
+void Grafo::checarRepeticoes (){
+  for (long unsigned int indice = 0 ; indice < vertices.size() ; indice++){
+      for (long unsigned int indice2 = 0 ; indice2 < vertices.size() ; indice2++)
+        if (indice2 != indice)
+          if (vertices[indice].getNome() == vertices[indice2].getNome()){
+            vertices.erase(vertices.begin() + indice2);
+            vertices[indice].peso += 1;
+          }
+
     }
 }
 
@@ -59,3 +80,17 @@ vector <string> Grafo::readLines (string arquivo){
   return vetor;
 }
 
+void Grafo::printarVetores(){
+  cout << vertices[0].getNome() << endl ;
+  cout << vertices[1].getNome() << endl ;
+  cout << vertices[2].getNome() << endl ;
+  cout << vertices[1].peso << endl ;
+  cout << vertices[3].getNome() << endl ;
+  cout << vertices[4].getNome() << endl ;
+  cout << vertices[5].getNome() << endl ;
+  cout << vertices[6].getNome() << endl ;
+  cout << vertices[7].getNome() << endl ;
+  cout << vertices[8].getNome() << endl ;
+  cout << vertices[9].getNome() << endl ;
+  cout << vertices[10].getNome() << endl ;
+}

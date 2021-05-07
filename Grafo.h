@@ -9,8 +9,9 @@
 /* Inicializa a classe Grafo */
 
 #include <string>
+#include <vector>
 
-#include "vertice.h"
+#include "Vertice.h"
 
 using namespace std; 
 
@@ -19,10 +20,12 @@ class Grafo {
         // Construtor - recebe um arquivo
         Grafo (string);
 
-    private:
-        Vector <Vertice> vertices;
+        void printarVetores();
 
-        Vertice criarVertice(string);
+    private:
+        vector <Vertice> vertices;
+
+        void checarRepeticoes();
 
         // Read lines from a file (recebe um arquivo)
         vector <string> readLines (string);
