@@ -10,7 +10,7 @@ palavras sao vertices e as arestas identificam quais palavras estao em sequencia
 No menu, estao seguintes funcionalidades:
 1. Exibir a palavra que mais aparece no texto (vertice com maior peso);
 2. Exibir a expressao de 2 palavras que mais aparece no texto (aresta com maior peso);
-3. 
+3. Exibir a expressao de N palavras que mais aparece no texto.
 
 ---------------------------------- MANUAL DO PROGRAMA ---------------------------------------
 

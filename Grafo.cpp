@@ -54,14 +54,14 @@ void Grafo::sequenciaMaisUtilizada(){
 
 void Grafo::palavrasConsecutivas(){
   int n ;
-  cout << "Quantas palavras consecutivas? " ;
+  cout << "Digite o valor de N -> " ;
   cin >> n ;
   cout << endl;
   criaVetorSequencia(n);
-
   encontraMaiorSequencia(n);
 } 
 
+// Printa na tela sequencia de n palavras que mais aparece no texto
 void Grafo::encontraMaiorSequencia(int n){
   vector <int> pesos;
   for (long unsigned int indice = 0 ; indice < sequenciaDePalavras.size() ; indice++){
@@ -84,16 +84,19 @@ void Grafo::encontraMaiorSequencia(int n){
       indiceMaiorPeso = indice3;
 
   // Printa na tela:
-  cout << "A sequencia de " << n << " palavras que mais aparece eh  \" " ;
-  for (long unsigned int indice3 = 0 ; indice3 < sequenciaDePalavras[indiceMaiorPeso].size() ; indice3++)
-    cout << sequenciaDePalavras[indiceMaiorPeso][indice3] << " " ;
-  cout << "\"" << endl;
-
+  if (pesos[indiceMaiorPeso] == 1)
+    cout << "TODAS AS FRASES TEM O MESMO PESO" << endl ;
+  else {
+    cout << "A sequencia de " << n << " palavras que mais aparece eh  \" " ;
+    for (long unsigned int indice3 = 0 ; indice3 < sequenciaDePalavras[indiceMaiorPeso].size() ; indice3++)
+      cout << sequenciaDePalavras[indiceMaiorPeso][indice3] << " " ;
+    cout << "\"" << endl;
+  }
 }
 
 void Grafo::criaVetorSequencia(int n){
   vector <string> vetorDePalavras ;
-  
+
   for (long unsigned int indice1 = 0 ; indice1 < (palavrasComPontuacao.size() - (n-1)) ; indice1++){
     int verdade = 1 ;
 
@@ -110,8 +113,6 @@ void Grafo::criaVetorSequencia(int n){
     vetorDePalavras = {};
   }
 }
-
-
 
 void Grafo::criaArestas(){
   for (long unsigned int indice = 0 ; indice < palavrasComPontuacao.size() -1 ; indice++)

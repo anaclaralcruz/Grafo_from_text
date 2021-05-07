@@ -45,5 +45,6 @@ int main (){
     else
         cout << "ERRO - Entrada invalida, selecione um numero de 1 a 3" << endl ;
 
+    cout << endl ;
     return OK;
 }

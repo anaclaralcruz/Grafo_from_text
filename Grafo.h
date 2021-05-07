@@ -48,6 +48,7 @@ class Grafo {
         Vertice& getVerticeComNome(string);
         // Cria um vetor com uma sequencia de palavras
         void criaVetorSequencia(int);
+        // Printa na tela sequencia de N palavras que mais aparece no texto
         void encontraMaiorSequencia(int);
 
         // Read lines from a file (recebe um arquivo)
